@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i" rel="stylesheet">
 	<meta charset="utf-8">
 	<title>Evaluaciones</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <nav id="logo">
-        <img src="../assets/images/logo-lab.png" alt="laboratoria"> <!--logo-->
-    </nav> 
-    <section class="option2">
-	    <select name="sede" id="sede" onchange="cargarGeneracion()">
-            <option value="">Seleccione sede...</option>
-        </select>
-        <select name="generacion" id="generacion" onchange="cargarSprint()">
-            <option value="">Seleccione generacion...</option>
-        </select> 
-        <select name="sprint" id="sprint">
-            <option value="">Seleccione sprint...</option>
-        </select>
-    </section> 
-    <section class="click2">
-        <button type="button" name="button" onclick="promedio2()">Evaluación general</button>
-        <button type="button" name="button" onclick="techEvaluation()">Evaluación técnica</button>
-        <button type="button" name="button" onclick="hseEvaluation()">Evaluación HSE</button>      
-    </section> 
-    <section id="global3"> 
-        <img id="girl" src="../assets/images/girl.jpg" alt="perfil">
-        <section class="user3">
-            <div>welcome</div>
-            <div>amalia</div>
-        </section>
-            <div class="menu"><a href="../views/students.html" target="_blank">alumnas</a></div>
-            <div class="menu"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
-            <div class="menu"><a href="../views/staff.html" target="_blank">staff</a></div>
-    </section>
-    
-    <section class="p1" id="general">
+
+	<nav>
+		<img  class="logo-staff" src="../assets/images/logo-lab.png" alt="laboratoria">
+	</nav>
+	<section class="nav-staff">
+			<div class="menu-staff"><a href="students.html" target="_blank">alumnas</a></div>
+			<div class="menu-staff"><a href="evaluations.html" target="_blank">evaluaciones</a></div>
+			<div class="menu-staff"><a href="staff.html" target="_blank">staff</a></div>
+	</section>
+	<table>
+        <tr>
+           <td align=right>Sede:</td>
+           <td align=left colspan=3>
+               <select name="sede" id="sede" onchange="cargarGeneracion()">
+                   <option value="">Seleccione sede...</option>
+               </select>
+           </td>
+       </tr>
+       <tr>
+           <td align=right>Generación:</td>
+           <td align=left colspan=3>
+               <select name="generacion" id="generacion" onchange="cargarSprint()">
+                   <option value="">Seleccione generacion...</option>
+               </select>
+           </td>
+       </tr>
+       <tr>
+          <td align=right>Sprint:</td>
+          <td align=left colspan=3>
+              <select name="sprint" id="sprint">
+                  <option value="">Seleccione sprint...</option>
+              </select>
+          </td>
+      </tr>
+     </table>
+
+
+<section class="click-staff">
+	 <button type="button" name="button" onclick="promedio2()">Evaluación general</button>
+	 <button type="button" name="button" onclick="techEvaluation()">Evaluación técnica</button>
+	 <button type="button" name="button" onclick="hseEvaluation()">Evaluación HSE</button>
+
+</section>
+
+    <section id="general">
 
     </section>
-    <section class="p2" id="tech">
+    <section id="tech">
 
     </section>
-    <section class="p3" id="hse">
-        
+    <section id="hse">
+
     </section>
     <script src="../js/data.js"></script>
     <script src="../js/app.js"></script>

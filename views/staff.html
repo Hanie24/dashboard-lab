@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i" rel="stylesheet">
 	<meta charset="utf-8">
 	<title>Staff</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-	<nav id="logo">
-        <img src="../assets/images/logo-lab.png" alt="laboratoria"> <!--logo-->
-    </nav>  
-    <section class="option3">
-	    <select name="sede" id="sede" onchange="cargarGeneracion()">
-            <option value="">Seleccione sede...</option>
-        </select>
-        <select name="generacion" id="generacion">
-            <option value="">Seleccione generacion...</option>
-        </select>
-    </section>
-    <section class="click3">
+	<nav>
+		<img  class="logo-staff" src="../assets/images/logo-lab.png" alt="laboratoria">
+	</nav>
+	<section class="nav-staff">
+			<div class="menu-staff"><a href="students.html" target="_blank">alumnas</a></div>
+			<div class="menu-staff"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
+			<div class="menu-staff"><a href="../views/staff.html" target="_blank">staff</a></div>
+	</section>
+	<table>
+ <tr>
+		<td align=right>Sede:</td>
+		<td align=left colspan=3>
+				<select name="sede" id="sede" onchange="cargarGeneracion()">
+						<option value="">Seleccione sede...</option>
+				</select>
+		</td>
+</tr>
+<tr>
+		<td align=right>Generación:</td>
+		<td align=left colspan=3>
+				<select name="generacion" id="generacion">
+						<option value="">Seleccione generacion...</option>
+				</select>
+		</td>
+</tr>
+</table>
+    <section class="click-staff">
             <button type="button" name="button" onclick="promProf()">Promedio profesor</button>
             <button type="button" name="button" onclick="promJedi()">Promedio jedi</button>
-    </section> 
-    <section id="global4"> 
-        <img id="girl" src="../assets/images/girl.jpg" alt="perfil">
-        <section class="user3">
-             <div>welcome</div>
-             <div>amalia</div>
-        </section>
-        <div class="menu"><a href="../views/students.html" target="_blank">alumnas</a></div>
-        <div class="menu"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
-        <div class="menu"><a href="../views/staff.html" target="_blank">staff</a></div>
     </section>
-    <section class="p1" id="prof">
-        
+    <section id="prof">
+
     </section>
-    
-    <section class="p2" id="jedi">
+
+    <section id="jedi">
 
     </section>
     <script src="../js/data.js"></script>

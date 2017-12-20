@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>Alumnas</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <nav id="logo">
-        <img src="../assets/images/logo-lab.png" alt="laboratoria"> <!--logo-->
-    </nav> 
-    <section class="option">
-	    <select name="sede" id="sede" onchange="cargarGeneracion()">
-            <option value="">Seleccione sede...</option>
-        </select>
-        <select name="generacion" id="generacion">
-            <option value="">Seleccione generacion...</option>
-        </select>
+	<nav>
+		<img  class="logo-staff" src="../assets/images/logo-lab.png" alt="laboratoria">
+	</nav>
+	<section class="nav-staff">
+			<div class="menu-staff"><a href="students.html" target="_blank">alumnas</a></div>
+			<div class="menu-staff"><a href="evaluations.html" target="_blank">evaluaciones</a></div>
+			<div class="menu-staff"><a href="staff.html" target="_blank">staff</a></div>
+	</section>
+	<table>
+ <tr>
+		<td align=right>Sede:</td>
+		<td align=left colspan=3>
+				<select name="sede" id="sede" onchange="cargarGeneracion()">
+						<option value="">Seleccione sede...</option>
+				</select>
+		</td>
+</tr>
+<tr>
+		<td align=right>Generación:</td>
+		<td align=left colspan=3>
+				<select name="generacion" id="generacion">
+						<option value="">Seleccione generacion...</option>
+				</select>
+		</td>
+</tr>
+</table>
+<section class="click-staff">
+	   <button type="button" name="button" onclick="buscar()">Total de alumnas</button>
+     <button type="button" name="button" onclick="desercion()">% Deserción</button>
+     <button type="button" name="button" onclick="satisfaccion()">%Satisfacción</button>
+</section>
+    <section id="active">
+
     </section>
-    <section class="click2">
-        <button type="button" onclick="buscar()">alumnas</button>
-        <button type="button" onclick="desercion()">% desercion</button>
-        <button type="button" onclick="satisfaccion()">% satisfaccion</button>
-        <button type="button" onclick="nps()">nps</button>
-    </section>  
-    <section id="global2"> 
-        <img id="girl" src="../assets/images/girl.jpg" alt="perfil">
-        <section class="user">
-             <div>welcome</div>
-             <div>amalia</div>
-        </section>
-        <div class="menu"><a href="../views/students.html" target="_blank">alumnas</a></div>
-        <div class="menu"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
-        <div class="menu"><a href="../views/staff.html" target="_blank">staff</a></div>
+    <section id="percent-desert">
+
     </section>
-    
-    <section class="p1" id="active">
-        
-    </section>
-    <section class="p2" id="percent-desert">
-        
-    </section>
-    <section class="p3" id="percent-satifac">
+    <section id="percent-satifac">
 
     </section>
     <script src="../js/data.js"></script>

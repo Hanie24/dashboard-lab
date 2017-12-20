@@ -13,7 +13,7 @@ function buscar(){ //indica el total de alumnas por sede y generacion
    }
  }
  //mostrando total de alumnas activas en html
-var element=document.createElement("p"); 
+var element=document.createElement("p");
 var result=document.createTextNode('Total de alumnas activas= '+ activeTrue);
 element.appendChild(result);
 document.getElementById("active").appendChild(element);
@@ -122,7 +122,7 @@ function promedio2(){ //calculando promedio general
       active=active+1;
     }
     var numSprint=data[sede][generacion].students[i].sprints.length;
-    for(var j=0; j<numSprint; j++){ //obteniendo calificaciones por sprint 
+    for(var j=0; j<numSprint; j++){ //obteniendo calificaciones por sprint
       avgTec=avgTec+data[sede][generacion].students[i].sprints[j].score.tech/numSprint; //calculando promedio TC
       avgHse=avgHse+data[sede][generacion].students[i].sprints[j].score.hse/numSprint; //calculando promedio HSE
     }
@@ -131,7 +131,7 @@ function promedio2(){ //calculando promedio general
     if(porcentaje>=70){ //validando si se alcanza la meta
       sumMeta=sumMeta+1;
     }
-    
+
   }
   //mostrando el promedio general de las alumnas en html
     var element=document.createElement("p");
@@ -143,7 +143,7 @@ function promedio2(){ //calculando promedio general
     element2.appendChild(result2);
     document.getElementById("general").appendChild(element2);
     var element3=document.createElement("p");
-    var result3=document.createTextNode ('Total de alumnas que lograron la meta='+sumMeta);
+    var result3=document.createTextNode ('Porcentaje de alumnas que lograron la meta='+((sumMeta*100)/active).toFixed(2)+'%');
     element3.appendChild(result3);
     document.getElementById("general").appendChild(element3);
     element.classList.add("evaluations");
@@ -163,7 +163,7 @@ function techEvaluation(){ //calculando evaluacion tecnica en promedio o sprint
     var totalMeta=0;
     var totalPuntos=1700;
     sprint=document.getElementById('sprint').value-1;
-    for (var i in data[sede][generacion].students){ 
+    for (var i in data[sede][generacion].students){
       nAlumnas=nAlumnas+1;
       var numSprint=data[sede][generacion].students[i].sprints.length; //obteniendo calificacion tecnica
       var porcentaje=((data[sede][generacion].students[i].sprints[sprint].score.tech*100)/totalPuntos).toFixed(2); //obteniendo porcentaje
@@ -208,6 +208,7 @@ function techAverage(){
       sumMeta=sumMeta+1;
     }
   }
+
 }
 
 function hseEvaluation(){
@@ -242,7 +243,7 @@ function hseEvaluation(){
     var element3=document.createElement("p");
     var result3=document.createTextNode('% Alumnas que lograron la meta='+((totalMeta*100)/nAlumnas).toFixed(2)+'%')
     element3.appendChild(result3);
-    document.getElementById("hse").appendChild(element3);  
+    document.getElementById("hse").appendChild(element3);
     element.classList.add("evaluations");
     element2.classList.add("evaluations");
     element3.classList.add("evaluations");
