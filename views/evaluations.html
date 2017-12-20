@@ -6,28 +6,43 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-	<div>sede</div>
+    <nav id="logo">
+        <img src="../assets/images/logo-lab.png" alt="laboratoria"> <!--logo-->
+    </nav> 
+    <section class="option2">
 	    <select name="sede" id="sede" onchange="cargarGeneracion()">
             <option value="">Seleccione sede...</option>
         </select>
-    <div>generacion</div>
         <select name="generacion" id="generacion" onchange="cargarSprint()">
             <option value="">Seleccione generacion...</option>
-        </select>
-    <div>Sprint:</div>
+        </select> 
         <select name="sprint" id="sprint">
             <option value="">Seleccione sprint...</option>
         </select>
-    <button type="button" name="button" onclick="promedio2()">Evaluación general</button>
-    <button type="button" name="button" onclick="techEvaluation()">Evaluación técnica</button>
-    <button type="button" name="button" onclick="hseEvaluation()">Evaluación HSE</button>
-    <section id="general">
+    </section> 
+    <section class="click2">
+        <button type="button" name="button" onclick="promedio2()">Evaluación general</button>
+        <button type="button" name="button" onclick="techEvaluation()">Evaluación técnica</button>
+        <button type="button" name="button" onclick="hseEvaluation()">Evaluación HSE</button>      
+    </section> 
+    <section id="global3"> 
+        <img id="girl" src="../assets/images/girl.jpg" alt="perfil">
+        <section class="user3">
+            <div>welcome</div>
+            <div>amalia</div>
+        </section>
+            <div class="menu"><a href="../views/students.html" target="_blank">alumnas</a></div>
+            <div class="menu"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
+            <div class="menu"><a href="../views/staff.html" target="_blank">staff</a></div>
+    </section>
+    
+    <section class="p1" id="general">
 
     </section>
-    <section id="tech">
+    <section class="p2" id="tech">
 
     </section>
-    <section id="hse">
+    <section class="p3" id="hse">
         
     </section>
     <script src="../js/data.js"></script>

@@ -8,38 +8,41 @@
 <body>
     <nav id="logo">
         <img src="../assets/images/logo-lab.png" alt="laboratoria"> <!--logo-->
-    </nav>   
-    <section id="global"> 
+    </nav> 
+    <section class="option">
+	    <select name="sede" id="sede" onchange="cargarGeneracion()">
+            <option value="">Seleccione sede...</option>
+        </select>
+        <select name="generacion" id="generacion">
+            <option value="">Seleccione generacion...</option>
+        </select>
+    </section>
+    <section class="click2">
+        <button type="button" onclick="buscar()">alumnas</button>
+        <button type="button" onclick="desercion()">% desercion</button>
+        <button type="button" onclick="satisfaccion()">% satisfaccion</button>
+        <button type="button" onclick="nps()">nps</button>
+    </section>  
+    <section id="global2"> 
         <img id="girl" src="../assets/images/girl.jpg" alt="perfil">
         <section class="user">
              <div>welcome</div>
              <div>amalia</div>
         </section>
-        <div class="menu"><a href="views/students.html" target="_blank">alumnas</a></div>
-        <div class="menu"><a href="views/evaluations.html" target="_blank">evaluaciones</a></div>
-        <div class="menu"><a href="views/staff.html" target="_blank">staff</a></div>
+        <div class="menu"><a href="../views/students.html" target="_blank">alumnas</a></div>
+        <div class="menu"><a href="../views/evaluations.html" target="_blank">evaluaciones</a></div>
+        <div class="menu"><a href="../views/staff.html" target="_blank">staff</a></div>
     </section>
-<!--	<div>sede</div>
-	    <select name="sede" id="sede" onchange="cargarGeneracion()">
-            <option value="">Seleccione sede...</option>
-        </select>
-    <div>generacion</div>
-        <select name="generacion" id="generacion">
-            <option value="">Seleccione generacion...</option>
-        </select>
-    <button type="button" onclick="buscar()">alumnas</button>
-    <button type="button" onclick="desercion()">% desercion</button>
-    <button type="button" onclick="satisfaccion()">% satisfaccion</button>
-    <button type="button" onclick="nps()">nps</button>
-    <section id="active">
+    
+    <section class="p1" id="active">
         
     </section>
-    <section id="percent-desert">
+    <section class="p2" id="percent-desert">
         
     </section>
-    <section id="percent-satifac">
+    <section class="p3" id="percent-satifac">
 
-    </section> -->
+    </section>
     <script src="../js/data.js"></script>
     <script src="../js/app.js"></script>
 </body>
