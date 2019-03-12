@@ -192,3 +192,7 @@ a{
   margin-bottom: 30px;
   border-radius: 50px;
 }
+
+.hide {
+    display: none;
+}

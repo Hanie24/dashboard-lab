@@ -1,189 +1,199 @@
-function buscar(){ //indica el total de alumnas por sede y generacion
- var sede=document.getElementById('sede').value;
- var generacion=document.getElementById('generacion').value;
- var students=0;
- var activeTrue=0;
- var activeFalse=0;
- for (var i in data[sede][generacion].students){ //recorre la data
-   students=students+1;
-   if(data[sede][generacion].students[i].active === true){//verifica si la alumna esta activa
-     activeTrue=activeTrue+1
-   }else{
-     activeFalse=activeFalse+1
-   }
- }
+const element = document.createElement("p");
+const element2 = document.createElement("p");
+const element3 = document.createElement("p");
+const desert = document.getElementById("percent-desert");
+const satisfaction = document.getElementById("percent-satifac");
+const general = document.getElementById("general");
+const tech = document.getElementById("tech");
+const hse = document.getElementById("hse");
+
+//indica el total de alumnas por sede y generacion
+function buscar(){
+  const sede = document.getElementById('sede').value;
+  const generacion = document.getElementById('generacion').value;
+  let students = 0;
+  let activeTrue = 0;
+  let activeFalse = 0;
+  //recorre la data
+  for (const i in data[sede][generacion].students){ 
+    students=students+1;
+    //verifica si la alumna esta activa
+    if(data[sede][generacion].students[i].active === true){
+      activeTrue=activeTrue+1
+    } else{
+      activeFalse=activeFalse+1
+    }
+}
+
  //mostrando total de alumnas activas en html
-var element=document.createElement("p");
-var result=document.createTextNode('Total de alumnas activas= '+ activeTrue);
+const result =document.createTextNode('Total de alumnas activas = ' + activeTrue);
 element.appendChild(result);
 document.getElementById("active").appendChild(element);
 element.classList.add("students");
 }
 
-function desercion(){ //porcentaje de desercion
- var sede=document.getElementById('sede').value;
- var generacion=document.getElementById('generacion').value;
- var students=0;
- var activeTrue=0;
- var activeFalse=0;
- for (var i in data[sede][generacion].students){ //verificando alumnas activas
-   students=students+1;
-   if(data[sede][generacion].students[i].active === true){
-     activeTrue=activeTrue+1
-   }else{
-     activeFalse=activeFalse+1
-   }
- }
- //mostrando resultados de desercion en html
-var element=document.createElement("p");
-var element2=document.createElement("p");
-var element3=document.createElement("p");
-var result=document.createTextNode('Total de alumnas activas= '+ activeTrue);
-var result2=document.createTextNode('Total de alumnas que desertaron= '+ activeFalse);
-var result3=document.createTextNode('Porcentaje de deserción= '+ ((activeFalse *100)/students).toFixed(2) +'%');
-element.appendChild(result);
+//porcentaje de desercion
+function desercion(){ 
+  const sede=document.getElementById('sede').value;
+  const generacion=document.getElementById('generacion').value;
+  let students=0;
+  let activeTrue=0;
+  let activeFalse=0;
+  //verificando alumnas activas
+  for (const i in data[sede][generacion].students){ 
+    students=students+1;
+    if(data[sede][generacion].students[i].active === true){
+      activeTrue=activeTrue+1
+    }else{
+      activeFalse=activeFalse+1
+    }
+  }
+
+//mostrando resultados de desercion en html
+const result2 = document.createTextNode('Total de alumnas que desertaron = ' + activeFalse);
+const result3 = document.createTextNode('Porcentaje de deserción = ' + ((activeFalse *100)/students).toFixed(2) +'%');
 element2.appendChild(result2);
 element3.appendChild(result3);
-document.getElementById("percent-desert").appendChild(element);
-document.getElementById("percent-desert").appendChild(element2);
-document.getElementById("percent-desert").appendChild(element3);
-element.classList.add("students");
+desert.appendChild(element2);
+desert.appendChild(element3);
 element2.classList.add("students");
 element3.classList.add("students");
 }
 
-function promProf(){ //calculando el promedio del profesor
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
+//calculando el promedio del profesor
+function promProf(){ 
+  const sede = document.getElementById('sede').value;
+  const generacion = document.getElementById('generacion').value;
   avgTeacher=0;
-  for (var i in data[sede][generacion].ratings){ //accediendo a ratings para obter calificaciones del profesor
+  //accediendo a ratings para obter calificaciones del profesor
+  for (const i in data[sede][generacion].ratings){ 
     avgTeacher=avgTeacher+data[sede][generacion].ratings[i].teacher/data[sede][generacion].ratings.length;
   }
   //mostrando promedio del profesor en html
-  var element=document.createElement("p");
-  var result=document.createTextNode('promedio de profesor= ' + avgTeacher.toFixed(2));
+  const result = document.createTextNode('promedio de profesor = ' + avgTeacher.toFixed(2));
   element.appendChild(result);
   document.getElementById("prof").appendChild(element);
   element.classList.add("staff");
 }
 
-function promJedi(){ //calculando promedio del Jedi
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
+//calculando promedio del Jedi
+function promJedi(){ 
+  const sede = document.getElementById('sede').value;
+  const generacion = document.getElementById('generacion').value;
   avgJedi=0;
-  for (var i in data[sede][generacion].ratings){ //recorriendo ratings para obtener calificaciones del Jedi
-    avgJedi=avgJedi+data[sede][generacion].ratings[i].jedi/data[sede][generacion].ratings.length; //calculando el promedio
+  //recorriendo ratings para obtener calificaciones del Jedi
+  for (const i in data[sede][generacion].ratings){ 
+    //calculando el promedio
+    avgJedi=avgJedi+data[sede][generacion].ratings[i].jedi/data[sede][generacion].ratings.length; 
   }
   //mostrando promedio de Jedi
-  var element=document.createElement("p");
-  var result=document.createTextNode('promedio de jedi= ' + avgJedi.toFixed(2));
+  const result=document.createTextNode('promedio de jedi = ' + avgJedi.toFixed(2));
   element.appendChild(result);
   document.getElementById("jedi").appendChild(element);
   element.classList.add("staff");
 }
 
-function satisfaccion(){ //calculando porcentaje de satisfaccion con Laboratoria
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
-  var sumSat=0;
-  var sumAlumSatisfechas=0;
-  for (var i in data[sede][generacion].ratings){//accediendo a ratings para obtener el numero de alumnas satisfechas
+//calculando porcentaje de satisfaccion con Laboratoria
+function satisfaccion(){ 
+  const sede=document.getElementById('sede').value;
+  const generacion=document.getElementById('generacion').value;
+  let sumSat=0;
+  let sumAlumSatisfechas=0;
+  //accediendo a ratings para obtener el numero de alumnas satisfechas
+  for (const i in data[sede][generacion].ratings){
     sumSat=sumSat+data[sede][generacion].ratings[i].student['no-cumple']+data[sede][generacion].ratings[i].student['cumple']+data[sede][generacion].ratings[i].student['supera'];
     sumAlumSatisfechas=sumAlumSatisfechas+data[sede][generacion].ratings[i].student['cumple']+data[sede][generacion].ratings[i].student['supera'];
   }
   //mostrando el promedio de satisfaccion
-  var element=document.createElement("p");
-  var element2=document.createElement("p");
-  var element3=document.createElement("p");
-  var result=document.createTextNode("Total de alumnas: " + sumSat);
-  var result2=document.createTextNode("Total de alumnas satisfechas: " + sumAlumSatisfechas);
-  var result3=document.createTextNode("Poecentaje de alumnas satisfechas: " + (sumAlumSatisfechas*100)/sumSat + "%");
-  element.appendChild(result);
+  const result2 = document.createTextNode("Total de alumnas satisfechas: " + sumAlumSatisfechas);
+  const result3 = document.createTextNode("Poecentaje de alumnas satisfechas: " + (sumAlumSatisfechas*100)/sumSat + "%");
   element2.appendChild(result2);
   element3.appendChild(result3);
-  document.getElementById("percent-satifac").appendChild(element);
-  document.getElementById("percent-satifac").appendChild(element2);
-  document.getElementById("percent-satifac").appendChild(element3);
-  element.classList.add("students");
+  satisfaction.appendChild(element2);
+  satisfaction.appendChild(element3);
   element2.classList.add("students");
   element3.classList.add("students");
 }
 
-function promedio2(){ //calculando promedio general
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
-  var sumMeta=0;
-  var active=0;
-  for (var i in data[sede][generacion].students){
-    var avgTec=0;
-    var avgHse=0;
-    var totalPuntos=1700+1200;
+//calculando promedio general
+function promedio2(){
+  const sede=document.getElementById('sede').value;
+  const generacion=document.getElementById('generacion').value;
+  let sumMeta=0;
+  let active=0;
+  for (const i in data[sede][generacion].students){
+    let avgTec=0;
+    let avgHse=0;
+    let totalPuntos = 1700+1200;
     if(data[sede][generacion].students[i].active === true){
       active=active+1;
     }
-    var numSprint=data[sede][generacion].students[i].sprints.length;
-    for(var j=0; j<numSprint; j++){ //obteniendo calificaciones por sprint
-      avgTec=avgTec+data[sede][generacion].students[i].sprints[j].score.tech/numSprint; //calculando promedio TC
-      avgHse=avgHse+data[sede][generacion].students[i].sprints[j].score.hse/numSprint; //calculando promedio HSE
+    const numSprint=data[sede][generacion].students[i].sprints.length;
+    //obteniendo calificaciones por sprint
+    for(let j = 0; j<numSprint; j++){ 
+      //calculando promedio TC
+      avgTec=avgTec+data[sede][generacion].students[i].sprints[j].score.tech/numSprint; 
+      //calculando promedio HSE
+      avgHse=avgHse+data[sede][generacion].students[i].sprints[j].score.hse/numSprint; 
     }
-    var avgGeneral=(avgTec+avgHse)/2
-    porcentaje=((avgGeneral*100)/totalPuntos); //calculando promedio general
-    if(porcentaje>=70){ //validando si se alcanza la meta
+    const avgGeneral=(avgTec+avgHse)/2
+    //calculando promedio general
+    porcentaje=((avgGeneral*100)/totalPuntos); 
+    //validando si se alcanza la meta
+    if(porcentaje>=70){ 
       sumMeta=sumMeta+1;
     }
 
   }
-  //mostrando el promedio general de las alumnas en html
-    var element=document.createElement("p");
-    var result=document.createTextNode('Total de alumnas activas='+active);
+//mostrando el promedio general de las alumnas en html
+    const result = document.createTextNode('Total de alumnas activas =' + active);
     element.appendChild(result);
-    document.getElementById("general").appendChild(element);
-    var element2=document.createElement("p");
-    var result2=document.createTextNode ('Total de alumnas que lograron la meta='+sumMeta);
+    general.appendChild(element);
+    const result2 = document.createTextNode ('Total de alumnas que lograron la meta =' + sumMeta);
     element2.appendChild(result2);
-    document.getElementById("general").appendChild(element2);
-    var element3=document.createElement("p");
-    var result3=document.createTextNode ('Porcentaje de alumnas que lograron la meta='+((sumMeta*100)/active).toFixed(2)+'%');
+    general.appendChild(element2);
+    const result3 = document.createTextNode ('Porcentaje de alumnas que lograron la meta =' + ((sumMeta*100)/active).toFixed(2)+'%');
     element3.appendChild(result3);
-    document.getElementById("general").appendChild(element3);
+    general.appendChild(element3);
     element.classList.add("evaluations");
     element2.classList.add("evaluations");
     element3.classList.add("evaluations");
 }
 
-function techEvaluation(){ //calculando evaluacion tecnica en promedio o sprint
+//calculando evaluacion tecnica en promedio o sprint
+function techEvaluation(){ 
   if(document.getElementById('sprint').value.length>1){
     techAverage();
   }else{
-    var sede=document.getElementById('sede').value;
-    var generacion=document.getElementById('generacion').value;
-    var sprint=document.getElementById('sprint').value;
-    var sumMeta=0;
-    var nAlumnas=0;
-    var totalMeta=0;
-    var totalPuntos=1700;
-    sprint=document.getElementById('sprint').value-1;
+    const sede = document.getElementById('sede').value;
+    const generacion = document.getElementById('generacion').value;
+    let sprint = document.getElementById('sprint').value;
+    let sumMeta = 0;
+    let nAlumnas = 0;
+    let totalMeta = 0;
+    let totalPuntos = 1700;
+    sprint = document.getElementById('sprint').value-1;
     for (var i in data[sede][generacion].students){
       nAlumnas=nAlumnas+1;
-      var numSprint=data[sede][generacion].students[i].sprints.length; //obteniendo calificacion tecnica
-      var porcentaje=((data[sede][generacion].students[i].sprints[sprint].score.tech*100)/totalPuntos).toFixed(2); //obteniendo porcentaje
-      if(porcentaje>=70){ //validando si se alcanza la meta
+      //obteniendo calificacion tecnica
+      var numSprint=data[sede][generacion].students[i].sprints.length; 
+      //obteniendo porcentaje
+      var porcentaje=((data[sede][generacion].students[i].sprints[sprint].score.tech*100)/totalPuntos).toFixed(2); 
+      //validando si se alcanza la meta
+      if(porcentaje>=70){ 
         totalMeta=totalMeta+1;
       }
     }
     //mostrando las evaluaciones TC
-    var element=document.createElement("p");
-    var element2=document.createElement("p")
-    var element3=document.createElement("p");
-    var result=document.createTextNode('N° de Alumnas: ' + nAlumnas);
-    var result2=document.createTextNode('N° de Alumnas que lograron la meta= ' + totalMeta);
-    var result3=document.createTextNode('% Alumnas que lograron la meta= ' + ((totalMeta*100)/nAlumnas).toFixed(2)+'%');
+    const result=document.createTextNode('N° de Alumnas: ' + nAlumnas);
+    const result2=document.createTextNode('N° de Alumnas que lograron la meta = ' + totalMeta);
+    const result3=document.createTextNode('% Alumnas que lograron la meta = ' + ((totalMeta*100)/nAlumnas).toFixed(2)+'%');
     element.appendChild(result);
     element2.appendChild(result2);
     element3.appendChild(result3);
-    document.getElementById("tech").appendChild(element);
-    document.getElementById("tech").appendChild(element2);
-    document.getElementById("tech").appendChild(element3);
+    tech.appendChild(element);
+    tech.appendChild(element2);
+    tech.appendChild(element3);
     element.classList.add("evaluations");
     element2.classList.add("evaluations");
     element3.classList.add("evaluations");
@@ -191,16 +201,16 @@ function techEvaluation(){ //calculando evaluacion tecnica en promedio o sprint
 }
 
 function techAverage(){
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
-  var sumMeta=0;
-  var nAlumnas=0;
-  for (var i in data[sede][generacion].students){
-    var avgTec=0;
-    var totalPuntos=1700;
+  const sede=document.getElementById('sede').value;
+  let generacion=document.getElementById('generacion').value;
+  let sumMeta=0;
+  let nAlumnas=0;
+  for (let i in data[sede][generacion].students){
+    let avgTec=0;
+    let totalPuntos=1700;
     nAlumnas=nAlumnas+1;
-    var numSprint=data[sede][generacion].students[i].sprints.length;
-    for(var j=0; j<data[sede][generacion].students[i].sprints.length; j++){
+    const numSprint=data[sede][generacion].students[i].sprints.length;
+    for(let j=0; j<data[sede][generacion].students[i].sprints.length; j++){
       avgTec=avgTec+data[sede][generacion].students[i].sprints[j].score.tech/numSprint;
     }
     porcentaje=(avgTec*100)/totalPuntos;
@@ -211,39 +221,36 @@ function techAverage(){
 
 }
 
+//mostrando las evaluaciones HSE
 function hseEvaluation(){
   if(document.getElementById('sprint').value.length>1){
     hseAverage();
   }else{
-    var sede=document.getElementById('sede').value;
-    var generacion=document.getElementById('generacion').value;
-    var sprint=document.getElementById('sprint').value;
-    var sumMeta=0;
-    var nAlumnas=0;
-    var totalMeta=0;
-    var totalPuntos=1200;
+    const sede=document.getElementById('sede').value;
+    const generacion=document.getElementById('generacion').value;
+    let sprint=document.getElementById('sprint').value;
+    let sumMeta=0;
+    let nAlumnas=0;
+    let totalMeta=0;
+    let totalPuntos=1200;
     sprint=document.getElementById('sprint').value-1;
-    console.log('Sprint '+(sprint+1));
-    for (var i in data[sede][generacion].students){
+    for (let i in data[sede][generacion].students){
       nAlumnas=nAlumnas+1;
-      var numSprint=data[sede][generacion].students[i].sprints.length;
-      var porcentaje=((data[sede][generacion].students[i].sprints[sprint].score.hse*100)/totalPuntos).toFixed(2);
+      let numSprint=data[sede][generacion].students[i].sprints.length;
+      let porcentaje=((data[sede][generacion].students[i].sprints[sprint].score.hse*100)/totalPuntos).toFixed(2);
       if(porcentaje>=70){
         totalMeta=totalMeta+1;
       }
     }
-    var element=document.createElement("p");
-    var result=document.createTextNode('N° de Alumnas='+nAlumnas);
+    const result=document.createTextNode('N° de Alumnas='+nAlumnas);
     element.appendChild(result);
-    document.getElementById("hse").appendChild(element);
-    var element2=document.createElement("p");
-    var result2=document.createTextNode('N° de Alumnas que lograron la meta= '+totalMeta);
+    hse.appendChild(element);
+    const result2=document.createTextNode('N° de Alumnas que lograron la meta= '+totalMeta);
     element2.appendChild(result2);
-    document.getElementById("hse").appendChild(element2);
-    var element3=document.createElement("p");
-    var result3=document.createTextNode('% Alumnas que lograron la meta='+((totalMeta*100)/nAlumnas).toFixed(2)+'%')
+    hse.appendChild(element2);
+    const result3=document.createTextNode('% Alumnas que lograron la meta='+((totalMeta*100)/nAlumnas).toFixed(2)+'%')
     element3.appendChild(result3);
-    document.getElementById("hse").appendChild(element3);
+    hse.appendChild(element3);
     element.classList.add("evaluations");
     element2.classList.add("evaluations");
     element3.classList.add("evaluations");
@@ -251,16 +258,16 @@ function hseEvaluation(){
 }
 
 function hseAverage(){
-  var sede=document.getElementById('sede').value;
-  var generacion=document.getElementById('generacion').value;
-  var sumMeta=0;
-  var nAlumnas=0;
-  for (var i in data[sede][generacion].students){
-    var avgHse=0;
-    var totalPuntos=1200;
+  const sede=document.getElementById('sede').value;
+  const generacion=document.getElementById('generacion').value;
+  let sumMeta=0;
+  let nAlumnas=0;
+  for (let i in data[sede][generacion].students){
+    let avgHse=0;
+    let totalPuntos=1200;
     nAlumnas=nAlumnas+1;
-    var numSprint=data[sede][generacion].students[i].sprints.length;
-    for(var j=0; j<data[sede][generacion].students[i].sprints.length; j++){
+    const numSprint=data[sede][generacion].students[i].sprints.length;
+    for(let j=0; j<data[sede][generacion].students[i].sprints.length; j++){
       avgHse=avgHse+data[sede][generacion].students[i].sprints[j].score.hse/numSprint;
     }
     porcentaje=(avgHse*100)/totalPuntos;
@@ -271,8 +278,8 @@ function hseAverage(){
 }
 
 function cargarSedes() {
-  var sedes=[];
-  for (var i in data){
+  const sedes=[];
+  for (let i in data){
     sedes.push(i);
   }
   addOptions("sede", sedes);
@@ -280,9 +287,9 @@ function cargarSedes() {
 
 //Función para agregar opciones a un <select>.
 function addOptions(domElement,sedes) {
-  var selector = document.getElementsByName(domElement)[0];
+  const selector = document.getElementsByName(domElement)[0];
   for (sede in sedes) {
-    var opcion = document.createElement("option");
+    const opcion = document.createElement("option");
     opcion.text = sedes[sede];
     opcion.value = sedes[sede];
     selector.add(opcion);
@@ -290,15 +297,15 @@ function addOptions(domElement,sedes) {
 }
 
 function cargarGeneracion() {
-    var listaGeneraciones = {
+    const listaGeneraciones = {
       AQP: ["2016-2", "2017-1"],
       CDMX: ["2017-1", "2017-2"],
       LIM: ["2016-2", "2017-1", "2017-2"],
       SCL: ["2016-2", "2017-1", "2017-2"]
     }
-    var sedes = document.getElementById('sede')
-    var generaciones = document.getElementById('generacion')
-    var sedeSeleccionada = sedes.value
+    const sedes = document.getElementById('sede')
+    const generaciones = document.getElementById('generacion')
+    let sedeSeleccionada = sedes.value
     // Se limpian las generaciones
     generaciones.innerHTML = '<option value="">Seleccione generación...</option>'
     if(sedeSeleccionada !== ''){
@@ -316,14 +323,13 @@ function cargarGeneracion() {
   }
 
   function cargarSprint() {
-      var listaSprint = {
+      const listaSprint = {
         '2016-2':[1,2,3,4,"Todos los sprints"],
         '2017-1':[1,2,3,4,"Todos los sprints"],
         '2017-2':[1,2,3,4,"Todos los sprints"]
       }
-      var sedes = document.getElementById('generacion')
-      var generaciones = document.getElementById('sprint')
-      var sedeSeleccionada = generacion.value
+      const generaciones = document.getElementById('sprint')
+      let sedeSeleccionada = generacion.value
       // Se limpian sprints
       generaciones.innerHTML = '<option value="">Seleccione sprint...</option>'
       if(sedeSeleccionada !== ''){
